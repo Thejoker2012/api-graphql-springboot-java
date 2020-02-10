@@ -1,5 +1,7 @@
-package com.udemy.compras.graphql;
+package com.udemy.compras.service;
 
+import com.udemy.compras.models.Cliente;
+import com.udemy.compras.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
