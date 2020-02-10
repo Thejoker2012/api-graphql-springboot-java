@@ -1,5 +1,6 @@
 package com.udemy.compras.service;
 
+import com.udemy.compras.models.Cliente;
 import com.udemy.compras.models.Compra;
 import com.udemy.compras.repository.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,9 @@ public class CompraService {
             return true;
         }
         return false;
+    }
+
+    public List<Compra> findAllByCliente(Cliente c) {
+        return repository.findAllByCliente(c);
     }
 }
