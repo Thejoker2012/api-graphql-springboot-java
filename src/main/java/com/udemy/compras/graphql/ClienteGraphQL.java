@@ -24,11 +24,11 @@ public class ClienteGraphQL implements GraphQLQueryResolver, GraphQLMutationReso
 
     //Salvar
     //Atualizar o Cliente passando o Id
-    public Cliente saveCliente(Long id, String nome, String email){
+    public Cliente saveCliente(ClienteInput input){
         Cliente c = new Cliente();
-        c.setId(id);
-        c.setNome(nome);
-        c.setEmail(email);
+        c.setId(input.getId());
+        c.setNome(input.getNome());
+        c.setEmail(input.getEmail());
         return clienteService.save(c);
     }
 
