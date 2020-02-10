@@ -1,4 +1,5 @@
 type Cliente {
+    id:ID
     nome:String
     email:String
 }
@@ -7,6 +8,6 @@ type Cliente {
 type Query {
     hello: String
     soma(a:Int, b:Int):Int
-    cliente:Cliente
+    cliente(id:ID):Cliente
     clientes:[Cliente]
 }
