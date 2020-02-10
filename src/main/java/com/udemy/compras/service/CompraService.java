@@ -4,6 +4,7 @@ import com.udemy.compras.models.Cliente;
 import com.udemy.compras.models.Compra;
 import com.udemy.compras.repository.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,15 +21,16 @@ public class CompraService {
         return repository.findById(id).orElse(null);//Sempre que houver retorno Optional usar orElse
     }
     //Buscar Todos os Compras
-    public List<Compra> findAll(){
-        return repository.findAll();
+    public List<Compra> findAll(Pageable pageable){
+
+        return repository.findAll(pageable).getContent();
     }
 
     //Salvar
     //Atualizar o Compra passando o Id
     @Transactional
-    public Compra save(Compra compra){
-        return repository.save(compra);
+    public Compra save(Compra c){
+        return repository.save(c);
     }
 
     //Deletar Compra passando id
