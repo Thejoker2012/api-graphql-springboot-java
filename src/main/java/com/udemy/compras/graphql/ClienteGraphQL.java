@@ -15,15 +15,15 @@ import java.util.List;
 public class ClienteGraphQL implements GraphQLQueryResolver, GraphQLMutationResolver {
 
     @Autowired
-    private ClienteService clienteService;
+    private ClienteService service;
 
     //Buscar um Cliente passando o id
     public Cliente cliente(Long id){
-        return clienteService.findById(id);
+        return service.findById(id);
     }
     //Buscar Todos os Clientes
     public List<Cliente> clientes(){
-        return clienteService.findAll();
+        return service.findAll();
     }
 
     //Salvar
@@ -35,7 +35,7 @@ public class ClienteGraphQL implements GraphQLQueryResolver, GraphQLMutationReso
 //        c.setEmail(input.getEmail());
         ModelMapper mapper = new ModelMapper();
         Cliente c = mapper.map(input, Cliente.class);
-        return clienteService.save(c);
+        return service.save(c);
 
     }
 
@@ -43,6 +43,6 @@ public class ClienteGraphQL implements GraphQLQueryResolver, GraphQLMutationReso
     //Faz a busca com o findByid se houver o cliente ele exclui e retorna true
     //caso não exista retorna false
     public Boolean deleteCliente(Long id){
-        return clienteService.deleteById(id);
+        return service.deleteById(id);
     }
 }

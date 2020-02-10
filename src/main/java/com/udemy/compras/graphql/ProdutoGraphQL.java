@@ -15,15 +15,15 @@ import java.util.List;
 public class ProdutoGraphQL implements GraphQLQueryResolver, GraphQLMutationResolver {
 
     @Autowired
-    private ProdutoService produtoService;
+    private ProdutoService service;
 
     //Buscar um Produto passando o id
     public Produto produto(Long id){
-        return produtoService.findById(id);
+        return service.findById(id);
     }
     //Buscar Todos os Produtos
     public List<Produto> produtos(){
-        return produtoService.findAll();
+        return service.findAll();
     }
 
     //Salvar ou
@@ -35,7 +35,7 @@ public class ProdutoGraphQL implements GraphQLQueryResolver, GraphQLMutationReso
 //        c.setEmail(input.getValor());
         ModelMapper mapper = new ModelMapper();
         Produto c = mapper.map(input, Produto.class);
-        return produtoService.save(c);
+        return service.save(c);
 
     }
 
@@ -43,6 +43,6 @@ public class ProdutoGraphQL implements GraphQLQueryResolver, GraphQLMutationReso
     //Faz a busca com o findByid se houver o produto ele exclui e retorna true
     //caso não exista retorna false
     public Boolean deleteProduto(Long id){
-        return produtoService.deleteById(id);
+        return service.deleteById(id);
     }
 }
