@@ -22,11 +22,11 @@ public class Compra {
 
     //Um cliente possui várias compras
     //Uma compra está associada a um cliente
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="cliente_id", nullable = true)
     private Cliente cliente;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="produto_id", nullable = true)
     private Produto produto;
 

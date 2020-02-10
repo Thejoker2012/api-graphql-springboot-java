@@ -1,9 +1,9 @@
 package com.udemy.compras.mapper;
 
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class ProdutoInput {
 
     private Long id;

@@ -7,7 +7,7 @@ type Compra {
 }
 
 input CompraInput {
-    id:ID!
+    id:ID
     quantidade:Int!
     status:String!
     cliente:ID!,
