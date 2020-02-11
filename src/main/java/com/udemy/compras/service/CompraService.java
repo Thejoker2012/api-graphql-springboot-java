@@ -5,6 +5,8 @@ import com.udemy.compras.models.Cliente;
 import com.udemy.compras.models.Compra;
 import com.udemy.compras.repository.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,7 @@ public class CompraService {
     //Salvar
     //Atualizar o Compra passando o Id
     @Transactional
+    @CacheEvict(value = "comprasByClientes", key = "#c.cliente.id")
     public Compra save(Compra c){
         if (c.getQuantidade() > 100){
             throw new DomainException("Não é possível fazer uma compra com mais de 100 items!");
@@ -49,6 +52,7 @@ public class CompraService {
         return false;
     }
 
+    @Cacheable(value = "comprasByClientes", key = "#c.id")
     public List<Compra> findAllByCliente(Cliente c) {
         return repository.findAllByCliente(c);
     }
